@@ -5,14 +5,18 @@ import java.util.*;
 
 public class AnimationTemplate extends JFrame {
 
-  String title = "Animation Template";
-  Color background = Color.BLUE;
+  String title = "Snake";
+  Color background = Color.black;
   int delay = 10;
 
   // Ваши переменные
+  int size;
+  Field field;
 
   void start() {
     // код для инициализации
+
+    field = new Field();
 
   }
 
@@ -24,6 +28,11 @@ public class AnimationTemplate extends JFrame {
   void draw(Graphics2D g2) {
 
     // код для рисования следующего кадра
+
+
+    field.drawing(g2);
+
+
 
   }
 
@@ -69,6 +78,7 @@ public class AnimationTemplate extends JFrame {
   }
 
   class DrawPanel extends JPanel {
+
     public DrawPanel() {
       setBackground(background);
       setFocusable(true);

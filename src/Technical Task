@@ -1,0 +1,10 @@
+1.Cross-platform.
+2.Portable.
+3.Classic version.
+4.The game should not have a menu.
+5.The game session should start after a short pause after the start of the program.
+6.Know the number of points at any point in the game.
+7.The speed of the snake increases periodically to increase the complexity of the game process.
+8.After the collision, the game must start again after a short pause.
+9.It would be nice to see some report of the loss and comparative information with the best result on this machine.
+10.The game must complete the work by pressing the ESC key on the keyboard.
