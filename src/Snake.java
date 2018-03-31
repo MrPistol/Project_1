@@ -19,13 +19,13 @@ public class Snake {
       position[1] = 0;
     }
     color = Color.white;
-/*    x = 420;
-    y = 0;*/
     dx = 1;
     dy = 0;
     size = 54;
+  }
 
-
+  public void setNumbers(int numbers) {
+    this.numbers = numbers;
   }
 
   public void move() {
@@ -40,13 +40,8 @@ public class Snake {
         coordinates[i - 1][0] = prevX;
         coordinates[i - 1][1] = prevY;
       }
-
-
     }
-/*    int nextX = x + dx * size;
-    int nextY = y + dy * size;
-    x = nextX;
-    y = nextY;*/
+
   }
 
   public void controller(int keyCode, int up, int right, int down, int left) {

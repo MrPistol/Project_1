@@ -12,6 +12,7 @@ public class AnimationTemplate extends JFrame {
   // Ваши переменные
   Field field;
   Snake snake;
+  Apples apples;
 
 
   void start() {
@@ -19,6 +20,7 @@ public class AnimationTemplate extends JFrame {
 
     field = new Field();
     snake = new Snake();
+    apples = new Apples();
 
 
   }
@@ -26,6 +28,7 @@ public class AnimationTemplate extends JFrame {
   void update() {
     // код для обновления свойств объектов
     snake.move();
+
 
   }
 
@@ -36,6 +39,8 @@ public class AnimationTemplate extends JFrame {
 
     field.drawing(g2);
     snake.drawing(g2,field);
+    apples.drawing(g2);
+
 
 
 
