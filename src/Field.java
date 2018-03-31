@@ -5,6 +5,8 @@ public class Field {
 
   private int[][][] field;
   private Color color;
+
+
   private int size;
   private int numberOfCells;
 
@@ -26,9 +28,15 @@ public class Field {
       y = 0;
       x += size;
     }
-
   }
 
+  public int getSize() {
+    return size;
+  }
+
+  public int getNumberOfCells() {
+    return numberOfCells;
+  }
 
   public void drawing(Graphics2D g2) {
 

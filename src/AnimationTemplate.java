@@ -7,21 +7,25 @@ public class AnimationTemplate extends JFrame {
 
   String title = "Snake";
   Color background = Color.black;
-  int delay = 10;
+  int delay = 200;
 
   // Ваши переменные
-  int size;
   Field field;
+  Snake snake;
+
 
   void start() {
     // код для инициализации
 
     field = new Field();
+    snake = new Snake();
+
 
   }
 
   void update() {
     // код для обновления свойств объектов
+    snake.move();
 
   }
 
@@ -31,6 +35,7 @@ public class AnimationTemplate extends JFrame {
 
 
     field.drawing(g2);
+    snake.drawing(g2,field);
 
 
 
@@ -38,9 +43,23 @@ public class AnimationTemplate extends JFrame {
 
   void input(int keyCode) {
     // код для обработки ввода
+    snake.controller(keyCode, KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT);
     if (keyCode == KeyEvent.VK_ESCAPE) {
       System.exit(0);
-    } // else if / switch...
+    }
+    if (keyCode == KeyEvent.VK_NUMPAD3) {
+      delay=10;
+    }
+    if (keyCode == KeyEvent.VK_NUMPAD6) {
+      delay=50;
+    }
+    if (keyCode == KeyEvent.VK_NUMPAD9) {
+      delay=100;
+    }
+
+    if (keyCode == KeyEvent.VK_ENTER) {
+      start();
+    }// else if / switch...
 
   }
 
