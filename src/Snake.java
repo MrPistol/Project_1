@@ -9,6 +9,7 @@ public class Snake {
   private int size;
   private int dx;
   private int dy;
+  private int score;
 
 
   public Snake() {
@@ -22,14 +23,11 @@ public class Snake {
     dx = 1;
     dy = 0;
     size = 54;
-  }
-
-  public void setNumbers(int numbers) {
-    this.numbers = numbers;
+    score = 0;
   }
 
   public void move() {
-    for (int i = 0; i < numbers; ++i) {
+    for (int i = 0; i < coordinates.length; ++i) {
       int prevX = coordinates[i][0];
       int prevY = coordinates[i][1];
       int nextX = coordinates[i][0] + dx * size;
@@ -71,6 +69,44 @@ public class Snake {
     }
   }
 
+  public void eatApples(Apples apples) {
+    if (coordinates[coordinates.length - 1][0] + size > apples.getX()
+        && coordinates[coordinates.length - 1][0] < apples.getX() + size
+        && coordinates[coordinates.length - 1][1] < apples.getY() + size
+        && coordinates[coordinates.length - 1][1] + size > apples.getY()) {
+      int[][] tempArray = copyArray(coordinates);
+      apples.setX(-100);
+      int currentX = coordinates[coordinates.length - 1][0];
+      int currentY = coordinates[coordinates.length - 1][1];
+      numbers++;
+      score++;
+      coordinates = new int[numbers][2];
+
+      coordinates = copyArrayPlusOne(tempArray);
+      coordinates[coordinates.length - 1][0] = currentX;
+      coordinates[coordinates.length - 1][1] = currentY;
+    }
+  }
+
+  public int[][] copyArray(int[][] array) {
+    int[][] copy = new int[array.length][2];
+    for (int i = 0; i < array.length; ++i) {
+      copy[i][0] = array[i][0];
+      copy[i][1] = array[i][1];
+    }
+    return copy;
+  }
+
+  public int[][] copyArrayPlusOne(int[][] array) {
+    int[][] copy = new int[array.length + 1][2];
+    for (int i = 0; i < array.length; ++i) {
+      copy[i][0] = array[i][0];
+      copy[i][1] = array[i][1];
+    }
+    return copy;
+  }
+
+
   public void drawing(Graphics2D g2, Field field) {
 
     for (int[] position : coordinates) {
@@ -89,6 +125,8 @@ public class Snake {
         position[1] = 0;
       }
     }
+
+    g2.drawString("Apples: "+score,20,40);
 
   }
 }

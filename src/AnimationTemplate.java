@@ -5,9 +5,9 @@ import java.util.*;
 
 public class AnimationTemplate extends JFrame {
 
-  String title = "Snake";
+  String title = "Immortal super high speed snake";
   Color background = Color.black;
-  int delay = 200;
+  int delay = 10;
 
   // Ваши переменные
   Field field;
@@ -28,7 +28,10 @@ public class AnimationTemplate extends JFrame {
   void update() {
     // код для обновления свойств объектов
     snake.move();
-
+    snake.eatApples(apples);
+    if(apples.getX() ==-100){
+      apples = new Apples();
+    }
 
   }
 
@@ -36,30 +39,28 @@ public class AnimationTemplate extends JFrame {
 
     // код для рисования следующего кадра
 
-
     field.drawing(g2);
-    snake.drawing(g2,field);
+    snake.drawing(g2, field);
     apples.drawing(g2);
-
-
 
 
   }
 
   void input(int keyCode) {
     // код для обработки ввода
-    snake.controller(keyCode, KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT);
+    snake
+        .controller(keyCode, KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT);
     if (keyCode == KeyEvent.VK_ESCAPE) {
       System.exit(0);
     }
     if (keyCode == KeyEvent.VK_NUMPAD3) {
-      delay=10;
+      delay = 10;
     }
     if (keyCode == KeyEvent.VK_NUMPAD6) {
-      delay=50;
+      delay = 50;
     }
     if (keyCode == KeyEvent.VK_NUMPAD9) {
-      delay=100;
+      delay = 100;
     }
 
     if (keyCode == KeyEvent.VK_ENTER) {
